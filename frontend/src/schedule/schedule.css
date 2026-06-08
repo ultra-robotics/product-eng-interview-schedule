@@ -1,0 +1,667 @@
+/* ============================================
+   SCHEDULE BUILDER — Dark industrial theme
+   Uses CSS vars from index.css:
+     --bg, --panel-bg, --border, --text, --muted, --accent
+   ============================================ */
+
+.sched-page {
+  padding: 1rem 1.25rem 2rem;
+  width: 100%;
+  margin: 0;
+  color: var(--text);
+}
+
+/* ---- Home ---- */
+
+.sched-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.sched-lead {
+  color: var(--muted);
+  margin: 0 0 1.5rem;
+}
+
+.sched-home-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.sched-shift-block h2 {
+  margin: 0 0 0.75rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.sched-home-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sched-home-btn {
+  display: block;
+  padding: 0.65rem 1rem;
+  text-align: center;
+  background: var(--panel-bg);
+  color: var(--text);
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.sched-home-btn:hover {
+  border-color: var(--accent);
+  background: var(--accent-dim);
+}
+
+/* ---- Editor header ---- */
+
+.sched-editor-head {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.sched-editor-head h1 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.sched-home-link {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.sched-save {
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+/* ---- Time controls ---- */
+
+.sched-time-controls {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.sched-time-label {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.sched-time-input {
+  font: inherit;
+  font-size: 0.85rem;
+  padding: 0.25rem 0.4rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--panel-bg);
+  color: var(--text);
+  color-scheme: dark;
+}
+
+/* ---- Tabs ---- */
+
+.sched-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 1rem;
+}
+
+.sched-tab {
+  padding: 0.5rem 1rem;
+  border: none;
+  background: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  white-space: nowrap;
+  transition: color 0.15s, background 0.15s;
+}
+
+.sched-tab:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.sched-tab.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.sched-tab-body {
+  width: 100%;
+}
+
+/* ---- Sections / headings ---- */
+
+.sched-section h2 {
+  margin: 0 0 0.75rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ---- Buttons ---- */
+
+.sched-primary {
+  background: linear-gradient(135deg, #00d4aa, #00b894);
+  color: #0a0e14;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  transition: box-shadow 0.15s;
+}
+
+.sched-primary:hover {
+  box-shadow: 0 4px 16px rgba(0, 212, 170, 0.3);
+}
+
+.sched-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.sched-danger {
+  background: rgba(255, 71, 87, 0.12);
+  color: #ff4757;
+  border: 1px solid rgba(255, 71, 87, 0.3);
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: background 0.15s;
+}
+
+.sched-danger:hover {
+  background: rgba(255, 71, 87, 0.22);
+}
+
+/* ---- Group card ---- */
+
+.sched-group {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: var(--panel-bg);
+}
+
+.sched-group-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.sched-group-head h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+/* ---- Pilot legend (swatches) ---- */
+
+.sched-legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.sched-legend-title {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin-right: 0.25rem;
+}
+
+.sched-swatch {
+  border: 2px solid transparent;
+  border-radius: 6px;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  min-height: 32px;
+  min-width: 48px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.sched-swatch.active {
+  border-color: var(--text);
+  box-shadow: 0 0 0 1px var(--text);
+}
+
+.sched-swatch-label {
+  color: #fff;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.7);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.sched-eraser {
+  background: #2a3040 !important;
+  color: var(--muted) !important;
+}
+
+/* ---- Robot-view grid ---- */
+
+.sched-scroll {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.sched-grid-table {
+  border-collapse: collapse;
+  font-size: 0.7rem;
+}
+
+.sched-corner {
+  min-width: 6rem;
+  position: sticky;
+  left: 0;
+  background: var(--panel-bg);
+  z-index: 1;
+}
+
+.sched-time-h {
+  width: 2.25rem;
+  min-width: 2.25rem;
+  padding: 0.2rem;
+  font-weight: 500;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+}
+
+.sched-row-h {
+  text-align: left;
+  padding: 0.35rem 0.5rem;
+  font-size: 0.8rem;
+  position: sticky;
+  left: 0;
+  background: #0f1520;
+  color: var(--text);
+  border-right: 1px solid var(--border);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sched-cell {
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  padding: 0;
+  cursor: crosshair;
+}
+
+/* ---- Pilot-view table ---- */
+
+.sched-pilot-table {
+  border-collapse: collapse;
+  font-size: 0.75rem;
+  table-layout: fixed;
+}
+
+.sched-pilot-cell {
+  width: 3.75rem;
+  padding: 0.25rem;
+  text-align: center;
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  color: var(--text);
+  font-weight: 500;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sched-pilot-table .sched-corner {
+  width: 8rem;
+}
+
+.sched-pilot-table .sched-time-h {
+  width: 3.75rem;
+  min-width: 3.75rem;
+}
+
+.sched-pilot-table .sched-row-h {
+  max-width: 8rem;
+}
+
+.sched-pilot-name {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.sched-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  padding: 0.5rem 0;
+}
+
+.sched-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  color: var(--text);
+}
+
+.sched-legend-swatch {
+  display: inline-block;
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.sched-muted {
+  color: var(--muted);
+}
+
+.sched-readonly-note {
+  font-size: 0.8rem;
+  margin: 0 0 0.5rem;
+}
+
+.sched-error {
+  color: #ff4757;
+}
+
+/* ---- Modal ---- */
+
+.sched-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  padding: 1rem;
+}
+
+.sched-modal {
+  background: #151b23;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  max-width: 420px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  color: var(--text);
+}
+
+.sched-modal h3 {
+  margin: 0;
+  color: var(--accent);
+}
+
+.sched-modal-hint {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+.sched-modal label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.sched-input,
+.sched-textarea,
+.sched-select {
+  font: inherit;
+  padding: 0.4rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #0f1520;
+  color: var(--text);
+}
+
+.sched-input:focus,
+.sched-textarea:focus,
+.sched-select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-dim);
+}
+
+.sched-textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+.sched-select {
+  color-scheme: dark;
+  cursor: pointer;
+}
+
+.sched-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.sched-modal-actions button {
+  padding: 0.45rem 0.85rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--panel-bg);
+  color: var(--text);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.sched-modal-actions button:hover {
+  border-color: var(--accent);
+}
+
+.sched-modal-actions .sched-primary {
+  border: none;
+}
+
+/* ---- Editable text ---- */
+
+.sched-editable {
+  cursor: text;
+  border-bottom: 1px dashed transparent;
+  transition: border-color 0.15s;
+}
+
+.sched-editable:hover {
+  border-bottom-color: var(--muted);
+}
+
+.sched-editable-input {
+  font: inherit;
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  padding: 0 0.25rem;
+  outline: none;
+  background: #0f1520;
+  color: var(--text);
+  width: 100%;
+  max-width: 14rem;
+}
+
+/* ---- Pilots section in modal ---- */
+
+.sched-pilots-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.sched-pilots-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.sched-pilots-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* ---- Auto-generate section in modal ---- */
+
+.sched-generate-section {
+  border-top: 1px solid var(--border);
+  padding-top: 0.5rem;
+}
+
+.sched-checkbox-row {
+  flex-direction: row !important;
+  align-items: center;
+  gap: 0.5rem !important;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.sched-checkbox-row input[type='checkbox'] {
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
+  accent-color: var(--accent);
+}
+
+.sched-generate-opts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  padding-left: 1.5rem;
+}
+
+.sched-generate-opts label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* ---- Promote button (tomorrow -> today) ---- */
+
+.sched-promote-btn {
+  background: rgba(0, 212, 170, 0.12);
+  color: #00d4aa;
+  border: 1px solid rgba(0, 212, 170, 0.3);
+  padding: 0.35rem 0.75rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+.sched-promote-btn:hover {
+  background: rgba(0, 212, 170, 0.22);
+}
+
+/* ---- Playhead (current Mexico City time) ---- */
+
+.sched-scroll-playhead {
+  position: relative;
+}
+
+.sched-playhead {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #ff4757;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.sched-playhead::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -3px;
+  width: 8px;
+  height: 8px;
+  background: #ff4757;
+  border-radius: 50%;
+}
+
+/* ---- Group header actions ---- */
+
+.sched-group-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.sched-secondary {
+  background: rgba(148, 163, 184, 0.12);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.sched-secondary:hover {
+  background: rgba(148, 163, 184, 0.22);
+  border-color: var(--accent);
+}
+
+/* ---- Schedule home header ---- */
+
+.sched-home-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}

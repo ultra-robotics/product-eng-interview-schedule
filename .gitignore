@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.venv/
+__pycache__/
+*.pyc
+.env
+.DS_Store
+
+# SQLite schedule database (created at runtime)
+*.db
+*.db-wal
+*.db-shm
